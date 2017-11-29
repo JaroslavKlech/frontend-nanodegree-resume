@@ -27,7 +27,7 @@ var projects = {
 			"title": "Jarda's blog",
 			"dates": "December 2016 - January 2017",
 			"description": "My blog written in python with a help of Django framework.",
-			"images": ["images/post.png"]
+			"images": ["images/create_post.png"]
 		}
 	]
 };
@@ -64,39 +64,40 @@ var work = {
 	]
 };
 
-var education = [{
+var education = {
 		"schools": [{
 				"name": "Palacky University",
-				"city": "Olomouc",
-				"degree": "BA",
+				"location": "Olomouc",
+				"degree": "MA",
+				"dates": 2013,
 				"url": "https://www.upol.cz",
-				"major": ["English", "Economics"]
+				"major": ["English", " Economics"]
 			},
 			{
 				"name": "Palacky University",
-				"city": "Olomouc",
-				"degree": "MA",
+				"location": "Olomouc",
+				"degree": "BA",
+				"dates": 2011,
 				"url": "https://www.upol.cz",
-				"major": ["English", "Economics"]
+				"major": ["English", " Economics"]
 			}
-		]
-	},
-	{
-		"onlineCourses": [{
-				"title": "JavaScript syntax",
-				"school": "Udacity",
-				"dates": "October 2017 - December 2017",
-				"url": "https://www.udacity.com"
+		],
+		"onlineClasses": [{
+			"title": "Bootcamp Prep",
+			"school": "Flatiron School",
+			"dates": "January 2017 - Present",
+			"url": "www.learn.co",
 			},
 			{
-				"title": "Linux foundations",
-				"school": "EdX",
-				"dates": "July 2017 - November 2017",
-				"url": "https://www.edx.com"
+			"title": "JavaScript Crash Course",
+			"school": "Udacity",
+			"dates": "January 2017",
+			"url": "www.udacity.com/course/ud804",
 			}
 		]
-	}
-]
+	};
+
+
 
 
 var formattedRole = HTMLheaderRole.replace("%data%", bio["role"]);
@@ -161,7 +162,6 @@ work.display = function() {
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 		var formattedEmployerTitle = formattedEmployer + formattedTitle;
-
 		$(".work-entry:last").append(formattedEmployerTitle);
 
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
@@ -172,6 +172,29 @@ work.display = function() {
 	}
 };
 work.display();
+
+
+education.display = function() {
+	for(school in education.schools) {
+		$("#education").append(HTMLschoolStart);
+		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		var formattedSchoolNameDegree = formattedSchoolName + formattedDegree;
+		$(".education-entry:last").append(formattedSchoolNameDegree);
+
+		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		$(".education-entry:last").append(formattedDates);
+
+		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+		$(".education-entry:last").append(formattedMajor);
+
+		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		$(".education-entry:last").append(formattedLocation);
+	}
+
+
+};
+education.display();
 
 
 $(document).click(function(loc) {
