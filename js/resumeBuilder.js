@@ -21,21 +21,13 @@ var projects = {
 			"title": "Resume website",
 			"dates": "December 2016",
 			"description": "My CV in electronic way",
-			"images": {
-				"firstImage": "https://wp.jsstatic.com/wp-content/uploads/sites/6/2014/10/123058.jpg",
-				"secondImage": "https://about.canva.com/wp-content/uploads/sites/3/2015/09/creative_resume.png",
-				"thirdImage": "https://thumbs.dreamstime.com/z/colorful-cool-resume-cv-template-new-curriculum-vitae-design-57724950.jpg"
-			}
+			"images": ["https://wp.jsstatic.com/wp-content/uploads/sites/6/2014/10/123058.jpg"]
 		},
 		{
 			"title": "Jarda's blog",
 			"dates": "December 2016 - January 2017",
 			"description": "My blog written in python with a help of Django framework.",
-			"images": {
-				"firstImage": "https://s3.amazonaws.com/clarityfm-production/attachments/1916/default/logo_blog.png?1406761370",
-				"secondImage": "https://i.pinimg.com/736x/52/b3/46/52b346d69951c9bc115a29d3131c768c--blog-tips-my-blog.jpg",
-				"thirdImage": "http://blog.easylearning.guru/wordpress/wp-content/uploads/2016/03/python-django-programming-blog-22-3-2016-778x381.png"
-			}
+			"images": ["images/post.png"]
 		}
 	]
 };
@@ -119,39 +111,38 @@ $("#header").prepend(formattedName, formattedRole);
 $("#topContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedLocation);
 $("#header").append(formattedWelcomeMessage, formattedPicture);
 
+bio.display = function() {
+	if(bio.skills.length > 0) {
+		$("#header").append(HTMLskillsStart);
 
-if(bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
+		var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+		$("#skills").append(formattedSkill);
 
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-	$("#skills").append(formattedSkill);
+		formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+		$("#skills").append(formattedSkill);
 
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-	$("#skills").append(formattedSkill);
+		formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+		$("#skills").append(formattedSkill);
 
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	$("#skills").append(formattedSkill);
+		formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+		$("#skills").append(formattedSkill);
 
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-	$("#skills").append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-	$("#skills").append(formattedSkill);
-
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[5]);
-	$("#skills").append(formattedSkill);
+		formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+		$("#skills").append(formattedSkill);
+	}
 };
+bio.display();
 
 
 function locationizer(work) {
 	var locationArray = [];
-
 	for (job in work.jobs) {
 		var newLocation = work.jobs[job].location;
 		locationArray.push(newLocation);
 	}
 	return locationArray;
 };
+
 
 function inName(name) {
 	name = name.trim().split(" ");
@@ -163,7 +154,8 @@ function inName(name) {
 };
 $("#main").append(internationalizeButton);
 
-var displayWork = function () {
+
+work.display = function() {
 	for(job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -179,8 +171,7 @@ var displayWork = function () {
 		$(".work-entry:last").append(formattedDescription);
 	}
 };
-
-displayWork();
+work.display();
 
 
 $(document).click(function(loc) {
