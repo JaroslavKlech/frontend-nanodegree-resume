@@ -111,6 +111,7 @@ var formattedPicture = HTMLbioPic.replace("%data%", bio["picture"]);
 $("#header").prepend(formattedName, formattedRole);
 $("#topContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedLocation);
 $("#header").append(formattedWelcomeMessage, formattedPicture);
+$("#footerContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedLocation);
 
 bio.display = function() {
 	if(bio.skills.length > 0) {
