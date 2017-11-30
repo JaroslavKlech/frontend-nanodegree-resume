@@ -65,37 +65,37 @@ var work = {
 };
 
 var education = {
-		"schools": [{
-				"name": "Palacky University",
-				"location": "Olomouc",
-				"degree": "MA",
-				"dates": 2013,
-				"url": "https://www.upol.cz",
-				"major": ["English", " Economics"]
-			},
-			{
-				"name": "Palacky University",
-				"location": "Olomouc",
-				"degree": "BA",
-				"dates": 2011,
-				"url": "https://www.upol.cz",
-				"major": ["English", " Economics"]
-			}
-		],
-		"onlineClasses": [{
-			"title": "Bootcamp Prep",
-			"school": "Flatiron School",
-			"dates": "January 2017 - Present",
-			"url": "www.learn.co",
-			},
-			{
-			"title": "JavaScript Crash Course",
+	"schools": [{
+			"name": "Palacky University",
+			"location": "Olomouc",
+			"degree": "MA",
+			"dates": 2013,
+			"url": "https://www.upol.cz",
+			"major": ["English", " Economics"]
+		},
+		{
+			"name": "Palacky University",
+			"location": "Olomouc",
+			"degree": "BA",
+			"dates": 2011,
+			"url": "https://www.upol.cz",
+			"major": ["English", " Economics"]
+		}
+	],
+	"onlineClasses": [{
+			"title": "Javascript Basics",
 			"school": "Udacity",
-			"dates": "January 2017",
-			"url": "www.udacity.com/course/ud804",
-			}
-		]
-	};
+			"dates": "October 2017 - November 2017",
+			"url": "https://classroom.udacity.com/courses/ud804"
+		},
+		{
+			"title": "Introduction to Linux",
+			"school": "edX",
+			"dates": "July 2017 - November 2017",
+			"url": "https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS101x+1T2017/course/"
+		}
+	]
+};
 
 
 
@@ -175,8 +175,10 @@ work.display();
 
 
 education.display = function() {
+	$("#education").append(HTMLschoolStart);
+
 	for(school in education.schools) {
-		$("#education").append(HTMLschoolStart);
+
 		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
 		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
 		var formattedSchoolNameDegree = formattedSchoolName + formattedDegree;
@@ -190,8 +192,21 @@ education.display = function() {
 
 		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
 		$(".education-entry:last").append(formattedLocation);
-	}
+	};
+	$("#education").append(HTMLonlineClasses);
+	for(course in education.onlineClasses) {
+		$("#education").append(HTMLschoolStart);
+		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineClasses[course].title);
+		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineClasses[course].school);
+		var formattedOnlineTitleSchool = formattedOnlineTitle + formattedOnlineSchool;
+		$(".education-entry:last").append(formattedOnlineTitleSchool);
 
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineClasses[course].dates);
+		$(".education-entry:last").append(formattedOnlineDates);
+
+		var formattedURL = HTMLonlineURL.replace("%data%", education.onlineClasses[course].url);
+		$(".education-entry:last").append(formattedURL);
+	}
 
 };
 education.display();
