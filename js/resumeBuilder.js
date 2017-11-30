@@ -11,9 +11,9 @@ var bio = {
 		"github": "JaroslavKlech",
 		"location": "Olomouc"
 	},
-	"welcomeMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet ornare ante, nec viverra quam. Curabitur fermentum lacus lacus, vel aliquet felis sodales sit amet. Mauris rutrum, nulla in dapibus malesuada, augue felis pretium est, iaculis aliquam ipsum ante et nibh. Vivamus leo mauris, tempus ac egestas et, eleifend eu turpis. Nulla non purus nec erat porta elementum. Curabitur non felis sit amet mauris eleifend aliquam. Integer sed diam felis. Nulla dignissim blandit nisl, porttitor ultricies augue tempus sed. Aliquam leo tellus, viverra eu mi a, imperdiet facilisis magna. Vestibulum eget nisl ac metus scelerisque facilisis. Integer eget enim eget ex porta dignissim ac in purus. Proin sem turpis, iaculis malesuada risus at, volutpat suscipit quam. Phasellus faucibus laoreet augue in varius. Suspendisse quis blandit diam, sed consequat neque. Donec vestibulum ornare odio sit amet consequat.",
+	"welcomeMessage": "A systematic ICT enthusiast with proficient English and an eye for detail is seeking an entry job of a technical or analytical character. He is motivated to learn and gain experience in a data analysis field and advance to the post of a seasoned data analyst.",
 	"skills": ["Git", "JavaScript", "Python", "HTML", "CSS"],
-	"picture": "images/fry.jpg"
+	"picture": "images/foto_Jaroslav_Klech.jpg"
 };
 
 var projects = {
